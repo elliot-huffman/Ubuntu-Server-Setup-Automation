@@ -22,7 +22,7 @@ sudo sed -i "5i PATH=$PATH:/usr/local/samba/sbin" /root/.bashrc
 sudo /usr/local/samba/sbin/samba
 sudo /usr/local/samba/bin/samba-tool domain level raise --domain-level=2008_R2
 sudo /usr/local/samba/bin/samba-tool domain level raise --forest-level=2008_R2
-sudo samba-tool domain passwordsettings set --complexity=off
+sudo /usr/local/samba/bin/samba-tool domain passwordsettings set --complexity=off
 read -p Setup Complete! Press Enter/Return to exit the script...
 sudo rm -R -I samba-master
 sudo reboot
