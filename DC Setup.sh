@@ -9,7 +9,7 @@ cd samba-master
 sudo ./configure
 sudo make
 sudo make install
-sudo sed -i.original -r '/\s\/\s/{s/(ext4\s*)([^\s]*)/\1\2,user_xattr,acl,barrier=1/}' /etc/fstab
+#sudo sed -i.original -r '/\s\/\s/{s/(ext4\s*)([^\s]*)/\1\2,user_xattr,acl,barrier=1/}' /etc/fstab
 mount -a
 sudo /usr/local/samba/bin/samba-tool domain provision
 sudo mv /etc/krb5.conf /etc/krb5.conf.bak
