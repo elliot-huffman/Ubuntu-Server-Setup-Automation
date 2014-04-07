@@ -8,7 +8,7 @@ function installsamba {
   sudo apt-get -y install git build-essential libacl1-dev libattr1-dev libblkid-dev libgnutls-dev libreadline-dev python-dev python-dnspython gdb pkg-config libpopt-dev libldap2-dev dnsutils libbsd-dev attr krb5-user docbook-xsl libcups2-dev acl
   git clone git://git.samba.org/samba.git samba-master
   cd samba-master
-  sudo ./configure
+  ./configure
   sudo make
   sudo make install
   sudo rm -f -R samba-master
