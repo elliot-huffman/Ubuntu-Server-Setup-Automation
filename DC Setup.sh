@@ -47,7 +47,6 @@ function installwebmin {
 function updatesystem {
   sudo apt-get update
   sudo apt-get -y dist-upgrade
-  sudo apt-get -y autoremove
   echo "Update Complete!"
   echo "It may be wise to restart your computer..."
   read -N 1
