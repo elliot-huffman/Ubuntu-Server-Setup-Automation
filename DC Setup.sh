@@ -12,8 +12,8 @@ function installsamba {
   sudo make
   sudo make install
   sudo rm -f -R samba-master
-  sudo sed -i "5i PATH=$PATH:/usr/local/samba/bin" ~/.bashrc
-  sudo sed -i "5i PATH=$PATH:/usr/local/samba/sbin" ~/.bashrc
+  sed -i "5i PATH=$PATH:/usr/local/samba/bin" ~/.bashrc
+  sed -i "5i PATH=$PATH:/usr/local/samba/sbin" ~/.bashrc
   sudo sed -i "5i PATH=$PATH:/usr/local/samba/bin" /root/.bashrc
   sudo sed -i "5i PATH=$PATH:/usr/local/samba/sbin" /root/.bashrc
   mainmenu
