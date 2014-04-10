@@ -49,7 +49,7 @@ updatesystem () {
   sudo apt-get -y dist-upgrade
   echo "Update Complete!"
   echo "It may be wise to restart your computer..."
-  read -N 1
+  read -n 1
   clear
   mainmenu
   }
@@ -144,7 +144,7 @@ mainmenu () {
   echo "Press 4 to install the current version of Webmin"
   echo "Press 5 to configure samba for Active Directory"
   echo "Press x to exit the script"
-  read -N 1 -p "Input Selection:" mainmenuinput
+  read -n 1 -p "Input Selection:" mainmenuinput
   if [ "$mainmenuinput" = "1" ]; then
             updatesystem
         elif [ "$mainmenuinput" = "2" ]; then
