@@ -80,20 +80,20 @@ domaincontrolleryorn () {
   echo "if you wish... Press wisely!"
   echo ""
   echo "Y or N:"
-  read -N 1 -p "Y or N:" domaincontrolleryesorno
+  read -p "Y or N:" domaincontrolleryesorno -n 1
   if [ $domaincontrolleryesorno = "Y" ]; then
    upgradeforrestanddomain
    elif [ "$$domaincontrolleryesorno" = "N" ]; then
             clear
             echo "Samba configuration complete!"
             echo "Press any key to continue..."
-            read -N 1
+            read -n 1
             mainmenu
     elif [ "$$domaincontrolleryesorno" = "n" ]; then
             clear
             echo "Samba configuration complete!"
             echo "Press any key to continue..."
-            read -N 1
+            read -n 1
             mainmenu
     elif [ "$$domaincontrolleryesorno" = "y" ]; then
             upgradeforrestanddomain
@@ -101,7 +101,7 @@ domaincontrolleryorn () {
       echo "Please press either Y or N!!!"
       echo ""
       echo "Press any key to continue..."
-      read -N 1
+      read -n 1
       clear
       domaincontrolleryorn
     fi
@@ -117,7 +117,7 @@ upgradeforrestanddomain () {
   echo "Domain Controller setup has completed!"
   echo ""
   echo "Press any key to return to the main menu..."
-  read -N 1
+  read -n 1
   clear
   mainmenu
   }
@@ -144,7 +144,7 @@ mainmenu () {
   echo "Press 4 to install the current version of Webmin"
   echo "Press 5 to configure samba for Active Directory"
   echo "Press x to exit the script"
-  read -n 1 -p "Input Selection:" mainmenuinput
+  read  -p "Input Selection:" mainmenuinput -n 1
   if [ "$mainmenuinput" = "1" ]; then
             updatesystem
         elif [ "$mainmenuinput" = "2" ]; then
