@@ -2,7 +2,7 @@
 
 # Ititialization
 
-function installsamba {
+installsamba () {
   sudo apt-get update
   sudo apt-get -y dist-upgrade
   sudo apt-get -y install git build-essential libacl1-dev libattr1-dev libblkid-dev libgnutls-dev libreadline-dev python-dev python-dnspython gdb pkg-config libpopt-dev libldap2-dev dnsutils libbsd-dev attr krb5-user docbook-xsl libcups2-dev acl
@@ -22,7 +22,7 @@ function installsamba {
 # This installs all of the necessary components for building samba then downloads samba from git.
 # After that it then compiles and installs samba and returns to the main menu.
 
-function installvsftpd {
+installvsftpd () {
   sudo apt-get update
   sudo apt-get -y dist-upgrade
   sudo apt-get -y install vsftpd
@@ -32,7 +32,7 @@ function installvsftpd {
 # This installs VSFTPd and return to the main menu.
 
 
-function installwebmin {
+installwebmin () {
   wget http://www.webmin.com/download/deb/webmin-current.deb
   sudo apt-get update
   sudo apt-get -y dist-upgrade
@@ -44,7 +44,7 @@ function installwebmin {
 
 # This installs the current version of WebMin and then returns to the main menu.
 
-function updatesystem {
+updatesystem () {
   sudo apt-get update
   sudo apt-get -y dist-upgrade
   echo "Update Complete!"
@@ -57,7 +57,7 @@ function updatesystem {
 # This install the latest updates for the system and then returns to the main menu.
 
 
-function configuresambaforactivedirectory {
+configuresambaforactivedirectory () {
   sudo sed -i.original -r '/[ \t]\/[ \t]/{s/(ext4[\t ]*)([^\t ]*)/\1\2,user_xattr,acl,barrier=1/}' /etc/fstab
   mount -a
   sudo /usr/local/samba/bin/samba-tool domain provision
@@ -71,7 +71,7 @@ function configuresambaforactivedirectory {
 # This function runs all of the necessary actions to make samba a domain controller.
 
 
-function domaincontrolleryorn {
+domaincontrolleryorn () {
   echo "did you set this instalation as a primary domain controller?"
   echo ""
   echo "If you select yes then it will upgrade the forrest and domain to"
@@ -110,7 +110,7 @@ function domaincontrolleryorn {
 # This asks the user if he or she would like to upgrade the domain and forrest level.
 # If yes then it roputs the user to the code below. If not then the user is taken to the main menu.
   
-function upgradeforrestanddomain  {
+upgradeforrestanddomain () {
   sudo /usr/local/samba/bin/samba-tool domain level raise --domain-level=2008_R2
   sudo /usr/local/samba/bin/samba-tool domain level raise --forest-level=2008_R2
   sudo /usr/local/samba/bin/samba-tool domain passwordsettings set --complexity=off
@@ -127,7 +127,7 @@ function upgradeforrestanddomain  {
 # Acceptable levels are 2008 and 2008 R2. The default is 2003.
 
 
-function quitprogram {
+quitprogram () {
   clear
   echo "Sorry to see you go... :("
   exit
@@ -137,7 +137,7 @@ function quitprogram {
 # Oh, did I mention that it stops the program?
 
 
-function mainmenu {
+mainmenu () {
   echo "Press 1 to update your system"
   echo "Press 2 to install samba"
   echo "Press 3 to install vsFTPd"
@@ -164,7 +164,7 @@ function mainmenu {
             echo "Please try again!"
             echo ""
             echo "Press any key to continue..."
-            read -N 1
+            read -n 1
             clear
             mainmenu
         fi
