@@ -80,7 +80,7 @@ domaincontrolleryorn () {
   echo "if you wish... Press wisely!"
   echo ""
   echo "Y or N:"
-  read -p "Y or N:" domaincontrolleryesorno -n 1
+  read -n 1 -p "Y or N:" "omaincontrolleryesorno"
   if [ $domaincontrolleryesorno = "Y" ]; then
    upgradeforrestanddomain
    elif [ "$$domaincontrolleryesorno" = "N" ]; then
@@ -144,7 +144,7 @@ mainmenu () {
   echo "Press 4 to install the current version of Webmin"
   echo "Press 5 to configure samba for Active Directory"
   echo "Press x to exit the script"
-  read  -p "Input Selection:" mainmenuinput -n 1
+  read -n 1 -p "Input Selection:" "mainmenuinput"
   if [ "$mainmenuinput" = "1" ]; then
             updatesystem
         elif [ "$mainmenuinput" = "2" ]; then
