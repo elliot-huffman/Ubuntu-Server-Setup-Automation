@@ -146,18 +146,25 @@ mainmenu () {
   echo "Press x to exit the script"
   read -n 1 -p "Input Selection:" "mainmenuinput"
   if [ "$mainmenuinput" = "1" ]; then
+            clear
             updatesystem
         elif [ "$mainmenuinput" = "2" ]; then
+            clear
             installsamba
         elif [ "$mainmenuinput" = "3" ]; then
+            clear
             installvsftpd
         elif [ "$mainmenuinput" = "4" ]; then
+            clear
             installwebmin
         elif [ "$mainmenuinput" = "5" ]; then
+            clear
             configuresambaforactivedirectory
         elif [ "$mainmenuinput" = "x" ];then
+            clear
             quitprogram
         elif [ "$mainmenuinput" = "X" ];then
+            clear
             quitprogram
         else
             echo "You have entered an invallid selection!"
