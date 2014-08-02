@@ -5,17 +5,7 @@
 installsamba () {
   sudo apt-get update
   sudo apt-get -y dist-upgrade
-  sudo apt-get -y install git build-essential libacl1-dev libattr1-dev libblkid-dev libgnutls-dev libreadline-dev python-dev python-dnspython gdb pkg-config libpopt-dev libldap2-dev dnsutils libbsd-dev attr krb5-user docbook-xsl libcups2-dev acl
-  git clone git://git.samba.org/samba.git samba-master
-  cd samba-master
-  ./configure
-  sudo make
-  sudo make install
-  sudo rm -f -R samba-master
-  sed -i "5i PATH=$PATH:/usr/local/samba/bin" ~/.bashrc
-  sed -i "5i PATH=$PATH:/usr/local/samba/sbin" ~/.bashrc
-  sudo sed -i "5i PATH=$PATH:/usr/local/samba/bin" /root/.bashrc
-  sudo sed -i "5i PATH=$PATH:/usr/local/samba/sbin" /root/.bashrc
+  sudo apt-get install python-dnspython dnsutils attr krb5-user docbook-xsl acl samba
   mainmenu
   }
 
@@ -60,11 +50,9 @@ updatesystem () {
 configuresambaforactivedirectory () {
   sudo sed -i.original -r '/[ \t]\/[ \t]/{s/(ext4[\t ]*)([^\t ]*)/\1\2,user_xattr,acl,barrier=1/}' /etc/fstab
   mount -a
-  sudo /usr/local/samba/bin/samba-tool domain provision
+  sudo samba-tool domain provision
   sudo mv /etc/krb5.conf /etc/krb5.conf.bak
-  sudo cp /usr/local/samba/private/krb5.conf /etc/krb5.conf
-  sudo sed -i "13i sudo /usr/local/samba/sbin/samba" /etc/rc.local
-  sudo /usr/local/samba/sbin/samba
+  sudo cp /var/local/samba/private/krb5.conf /etc/krb5.conf
   domaincontrolleryorn
   }
 
@@ -111,9 +99,9 @@ domaincontrolleryorn () {
 # If yes then it roputs the user to the code below. If not then the user is taken to the main menu.
   
 upgradeforrestanddomain () {
-  sudo /usr/local/samba/bin/samba-tool domain level raise --domain-level=2008_R2
-  sudo /usr/local/samba/bin/samba-tool domain level raise --forest-level=2008_R2
-  sudo /usr/local/samba/bin/samba-tool domain passwordsettings set --complexity=off
+  sudo samba-tool domain level raise --domain-level=2008_R2
+  sudo samba-tool domain level raise --forest-level=2008_R2
+  sudo samba-tool domain passwordsettings set --complexity=off
   echo "Domain Controller setup has completed!"
   echo ""
   echo "Press any key to return to the main menu..."
