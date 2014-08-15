@@ -50,7 +50,7 @@ updatesystem () {
 configuresambaforactivedirectory () {
   sudo sed -i.original -r '/[ \t]\/[ \t]/{s/(ext4[\t ]*)([^\t ]*)/\1\2,user_xattr,acl,barrier=1/}' /etc/fstab
   mount -a
-  sudo samba-tool domain provision
+  sudo samba-tool domain provision -–use-rfc2307 -–interactive
   sudo mv /etc/krb5.conf /etc/krb5.conf.bak
   sudo cp /var/local/samba/private/krb5.conf /etc/krb5.conf
   domaincontrolleryorn
