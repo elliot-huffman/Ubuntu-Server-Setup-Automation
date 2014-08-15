@@ -53,7 +53,7 @@ configuresambaforactivedirectory () {
   sudo rm /etc/samba/smb.conf
   sudo samba-tool domain provision --use-rfc2307 --interactive
   sudo mv /etc/krb5.conf /etc/krb5.conf.bak
-  sudo cp /var/local/samba/private/krb5.conf /etc/krb5.conf
+  sudo cp /var/lib/samba/private/krb5.conf /etc/krb5.conf
   domaincontrolleryorn
   }
 
