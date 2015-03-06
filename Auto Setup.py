@@ -59,15 +59,16 @@ def updatesystem():
     print("")
     print("Press Enter/Return to continue...")
     input()
- #   call(["read", "-n", "1"])
+ #  call(["read", "-n", "1"])
     mainmenu()
 
 # This install the latest updates for the system and then returns to the main menu.
 
 
 def configuresambaforactivedirectory():
-    call(["sudo", "sed", "-i.original", "-r", "'/[ \t]\/[ \t]/{s/(ext4[\t ]*)([^\t ]*)/\1\2,user_xattr,acl,barrier=1/}'", "/etc/fstab"])
-    call(["mount", "-a"])
+    part1 = "\'/[ \\t]\\/[ \\t]/{s/(ext4[\\t ]*)"
+    part2 = "([^\\t ]*)/\\1\\2,user_xattr,acl,barrier=1/}\'"
+    call(["sudo", "sed", "-i.original", "-r", part1 + part2, "/etc/fstab"])
     call(["sudo", "rm", "/etc/samba/smb.conf"])
     call(["sudo", "samba-tool", "domain", "provision", "--use-rfc2307", "--interactive"])
     call(["sudo", "mv", "/etc/krb5.conf", "/etc/krb5.conf.bak"])
