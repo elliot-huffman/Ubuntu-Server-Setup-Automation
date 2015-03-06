@@ -1,48 +1,48 @@
 __author__ = 'Elliot'
 from subprocess import call
 def installsamba():
-    call("sudo apt-get update")
-    call("sudo apt-get -y dist-upgrade")
-    call("sudo apt-get install python-dnspython dnsutils attr krb5-user docbook-xsl acl samba")
+    call(["sudo", "apt-get", "update"])
+    call(["sudo", "apt-get", "-y", "dist-upgrade"])
+    call(["sudo", "apt-get", "install", "python-dnspython", "dnsutils", "attr", "krb5-user", "docbook-xsl", "acl", "samba"])
 
 # This installs all of the necessary components for building samba then downloads samba from git.
 # After that it then compiles and installs samba and returns to the main menu.
 
 def installvsftpd():
-    call("sudo apt-get update")
-    call("sudo apt-get -y dist-upgrade")
-    call("sudo apt-get -y install vsftpd")
+    call(["sudo", "apt-get", "update"])
+    call(["sudo", "apt-get", "-y", "dist-upgrade"])
+    call(["sudo", "apt-get", "-y", "install", "vsftpd"])
 # This installs VSFTPd and return to the main menu.
 
 
 def installwebmin():
-    call("wget http://www.webmin.com/download/deb/webmin-current.deb")
-    call("sudo apt-get update")
-    call("sudo apt-get -y dist-upgrade")
-    call("sudo dpkg -i webmin-current.deb")
-    call("sudo apt-get -y install -f")
-    call("rm webmin-current.deb")
+    call(["wget", "http://www.webmin.com/download/deb/webmin-current.deb"])
+    call(["sudo", "apt-get", "update"])
+    call(["sudo", "apt-get", "-y", "dist-upgrade"])
+    call(["sudo", "dpkg", "-i", "webmin-current.deb"])
+    call(["sudo", "apt-get", "-y", "install", "-f"])
+    call(["rm", "webmin-current.deb"])
 
 # This installs the current version of WebMin and then returns to the main menu.
 
 def updatesystem():
-    call("sudo apt-get update")
-    call("sudo apt-get -y dist-upgrade")
+    call(["sudo", "apt-get", "update"])
+    call(["sudo", "apt-get", "-y", "dist-upgrade"])
     print("Update Complete!")
     print("It may be wise to restart your computer...")
-    call("read -n 1")
+    call(["read", "-n", "1"])
     call("clear")
 
 # This install the latest updates for the system and then returns to the main menu.
 
 
 def configuresambaforactivedirectory():
-    call("sudo sed -i.original -r '/[ \t]\/[ \t]/{s/(ext4[\t ]*)([^\t ]*)/\1\2,user_xattr,acl,barrier=1/}' /etc/fstab")
-    call("mount -a")
-    call("sudo rm /etc/samba/smb.conf")
-    call("sudo samba-tool domain provision --use-rfc2307 --interactive")
-    call("sudo mv /etc/krb5.conf /etc/krb5.conf.bak")
-    call("sudo cp /var/lib/samba/private/krb5.conf /etc/krb5.conf")
+    call(["sudo", "sed", "-i.original", "-r", "'/[ \t]\/[ \t]/{s/(ext4[\t ]*)([^\t ]*)/\1\2,user_xattr,acl,barrier=1/}'", "/etc/fstab"])
+    call(["mount", "-a"])
+    call(["sudo", "rm", "/etc/samba/smb.conf"])
+    call(["sudo", "samba-tool", "domain", "provision", "--use-rfc2307", "--interactive"])
+    call(["sudo", "mv", "/etc/krb5.conf", "/etc/krb5.conf.bak"])
+    call(["sudo", "cp", "/var/lib/samba/private/krb5.conf", "/etc/krb5.conf"])
 
 # This function runs all of the necessary actions to make samba a domain controller.
 
@@ -64,12 +64,12 @@ def domaincontrolleryorn ():
         print("Samba configuration complete!")
         print("Press any key to continue...")
         print("read -n 1")
-        mainmenu
+        mainmenu()
     else:
         print("Please press either Y or N!!!")
         print("")
         print("Press any key to continue...")
-        call("read -n 1")
+        call(["read", "-n", "1"])
         call("clear")
         domaincontrolleryorn()
 
@@ -77,13 +77,13 @@ def domaincontrolleryorn ():
 # If yes then it roputs the user to the code below. If not then the user is taken to the main menu.
 
 def upgradeforrestanddomain():
-    call("sudo samba-tool domain level raise --domain-level=2008_R2")
-    call("sudo samba-tool domain level raise --forest-level=2008_R2")
-    call("sudo samba-tool domain passwordsettings set --complexity=off")
+    call(["sudo", "samba-tool", "domain level", "raise", "--domain-level=2008_R2"])
+    call(["sudo", "samba-tool", "domain", "level", "raise", "--forest-level=2008_R2"])
+    call(["sudo", "samba-tool", "domain", "passwordsettings", "set", "--complexity=off"])
     print("Domain Controller setup has completed!")
     print("")
     print("Press any key to return to the main menu...")
-    call("read -n 1")
+    call(["read", "-n", "1"])
     call("clear")
     mainmenu()
 
@@ -101,6 +101,7 @@ def quitprogram():
 
 
 def mainmenu():
+    call("clear")
     print("Press 1 to update your system")
     print("Press 2 to install samba")
     print("Press 3 to install vsFTPd")
@@ -132,7 +133,7 @@ def mainmenu():
         print("Please try again!")
         print("")
         print("Press any key to continue...")
-        call("read -n 1")
+        call(["read", "-n", "1"])
         call("clear")
         mainmenu()
 
