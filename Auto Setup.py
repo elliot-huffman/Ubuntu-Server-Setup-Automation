@@ -1,11 +1,15 @@
 __author__ = 'Elliot'
 from subprocess import call
-import platform
-def clear():
-    if platform.system() == "Windows":
+from platform import system
+
+def clear_screen():
+    if system() == "Windows":
         call("cls")
-    elif platform.system() == "Darwin" or platform.system() == "Linux":
-        clear()
+    elif system() == "Darwin" or platform.system() == "Linux":
+        call("clear")
+
+# Sets up a multi platform clear screen function for Windows, OS X and Linux
+
 def installsamba():
     call(["sudo", "apt-get", "update"])
     call(["sudo", "apt-get", "-y", "dist-upgrade"])
@@ -16,7 +20,7 @@ def installsamba():
 # After that it then compiles and installs samba and returns to the main menu.
 
 def installvsftpd():
-    clear()
+    clear_screen()
     call(["sudo", "apt-get", "update"])
     call(["sudo", "apt-get", "-y", "dist-upgrade"])
     call(["sudo", "apt-get", "-y", "install", "vsftpd"])
@@ -25,7 +29,7 @@ def installvsftpd():
 
 
 def installwebmin():
-    clear()
+    clear_screen()
     call(["wget", "http://www.webmin.com/download/deb/webmin-current.deb"])
     call(["sudo", "apt-get", "update"])
     call(["sudo", "apt-get", "-y", "dist-upgrade"])
@@ -39,7 +43,7 @@ def installwebmin():
 def updatesystem():
     call(["sudo", "apt-get", "update"])
     call(["sudo", "apt-get", "-y", "dist-upgrade"])
-    clear()
+    clear_screen()
     print("Update Complete!")
     print("It may be wise to restart your computer.")
     print("")
@@ -64,7 +68,7 @@ def configuresambaforactivedirectory():
 
 
 def domaincontrolleryorn():
-    clear()
+    clear_screen()
     print("did you set this instalation as a primary domain controller?")
     print("")
     print("If you select yes then it will upgrade the forrest and domain to")
@@ -78,7 +82,7 @@ def domaincontrolleryorn():
         upgradeforrestanddomain()
         mainmenu()
     elif domaincontrolleryesorno == "N" or domaincontrolleryesorno == "n":
-        clear()
+        clear_screen()
         print("Samba configuration complete!")
         print("Press Enter/Return to continue...")
         input()
@@ -96,7 +100,7 @@ def domaincontrolleryorn():
 # If yes then it roputs the user to the code below. If not then the user is taken to the main menu.
 
 def upgradeforrestanddomain():
-    clear()
+    clear_screen()
     call(["sudo", "samba-tool", "domain level", "raise", "--domain-level=2008_R2"])
     call(["sudo", "samba-tool", "domain", "level", "raise", "--forest-level=2008_R2"])
     call(["sudo", "samba-tool", "domain", "passwordsettings", "set", "--complexity=off"])
@@ -113,7 +117,7 @@ def upgradeforrestanddomain():
 
 
 def quitprogram():
-    clear()
+    clear_screen()
     print("Sorry to see you go... :(")
     exit()
 # This is a simple good by program closer.
@@ -121,7 +125,7 @@ def quitprogram():
 
 
 def mainmenu():
-    clear()
+    clear_screen()
     print("Press 1 to update your system")
     print("Press 2 to install samba")
     print("Press 3 to install vsFTPd")
@@ -143,7 +147,7 @@ def mainmenu():
     elif mainmenuinput == "x" or mainmenuinput == "X":
         quitprogram()
     else:
-        clear()
+        clear_screen()
         print("You have entered an invallid selection!")
         print("Please try again!")
         print("")
