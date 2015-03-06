@@ -5,7 +5,7 @@ from platform import system
 def clear_screen():
     if system() == "Windows":
         call("cls")
-    elif system() == "Darwin" or platform.system() == "Linux":
+    elif system() == "Darwin" or system() == "Linux":
         call("clear")
 
 # Sets up a multi platform clear screen function for Windows, OS X and Linux
