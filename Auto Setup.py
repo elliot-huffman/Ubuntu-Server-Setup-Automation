@@ -59,7 +59,7 @@ def domaincontrolleryorn ():
     print("if you wish... Press wisely!")
     print("")
     print("Y or N:")
-    domaincontrolleryesorno = input("Y or N:")
+    domaincontrolleryesorno = str(input("Y or N:"))
     if domaincontrolleryesorno == "Y" or domaincontrolleryesorno == "y":
         upgradeforrestanddomain()
     elif domaincontrolleryesorno == "N" or domaincontrolleryesorno == "n":
@@ -115,20 +115,20 @@ def mainmenu():
     print("Press 5 to configure samba for Active Directory")
     print("Press x to exit the script")
     print("")
-    mainmenuinput = input("Input Selection:")
-    if mainmenuinput == 1:
+    mainmenuinput = str(input("Input Selection:"))
+    if mainmenuinput == "1":
         call("clear")
         updatesystem()
-    elif mainmenuinput == 2:
+    elif mainmenuinput == "2":
         call("clear")
         installsamba()
-    elif mainmenuinput == 3:
+    elif mainmenuinput == "3":
         call("clear")
         installvsftpd()
-    elif mainmenuinput == 4:
+    elif mainmenuinput == "4":
         call("clear")
         installwebmin()
-    elif mainmenuinput == 5:
+    elif mainmenuinput == "5":
         call("clear")
         configuresambaforactivedirectory()
     elif mainmenuinput == "x" or mainmenuinput == "X":
