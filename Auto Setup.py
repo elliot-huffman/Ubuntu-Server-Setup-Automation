@@ -5,7 +5,7 @@ from platform import system
 def clear_screen():
     if system() == "Windows":
         call("cls")
-    elif system() == "Darwin" or system() == "Linux":
+    elif system() == "Darwin" or platform.system() == "Linux":
         call("clear")
 
 # Sets up a multi platform clear screen function for Windows, OS X and Linux
@@ -14,28 +14,38 @@ def installsamba():
     call(["sudo", "apt-get", "update"])
     call(["sudo", "apt-get", "-y", "dist-upgrade"])
     call(["sudo", "apt-get", "install", "python-dnspython", "dnsutils", "attr", "krb5-user", "docbook-xsl", "acl", "samba"])
+    clear_screen()
+    print("SAMBA is now installed!")
+    print("")
+    print("Press Enter/Return to continue...")
     mainmenu()
 
 # This installs all of the necessary components for building samba then downloads samba from git.
 # After that it then compiles and installs samba and returns to the main menu.
 
 def installvsftpd():
-    clear_screen()
     call(["sudo", "apt-get", "update"])
     call(["sudo", "apt-get", "-y", "dist-upgrade"])
     call(["sudo", "apt-get", "-y", "install", "vsftpd"])
+    clear_screen()
+    print("VSFTPd is now installed!")
+    print("")
+    print("Press Enter/Return to continue...")
     mainmenu()
 # This installs VSFTPd and return to the main menu.
 
 
 def installwebmin():
-    clear_screen()
     call(["wget", "http://www.webmin.com/download/deb/webmin-current.deb"])
     call(["sudo", "apt-get", "update"])
     call(["sudo", "apt-get", "-y", "dist-upgrade"])
     call(["sudo", "dpkg", "-i", "webmin-current.deb"])
     call(["sudo", "apt-get", "-y", "install", "-f"])
     call(["rm", "webmin-current.deb"])
+    clear_screen()
+    print("Webmin is now installed!")
+    print("")
+    print("Press Enter/Return to continue...")
     mainmenu()
 
 # This installs the current version of WebMin and then returns to the main menu.
@@ -62,6 +72,10 @@ def configuresambaforactivedirectory():
     call(["sudo", "samba-tool", "domain", "provision", "--use-rfc2307", "--interactive"])
     call(["sudo", "mv", "/etc/krb5.conf", "/etc/krb5.conf.bak"])
     call(["sudo", "cp", "/var/lib/samba/private/krb5.conf", "/etc/krb5.conf"])
+    clear_screen()
+    print("SAMBA is now configured for Active Directory!")
+    print("")
+    print("Press Enter/Return to continue...")
     mainmenu()
 
 # This function runs all of the necessary actions to make samba a domain controller.
@@ -69,11 +83,11 @@ def configuresambaforactivedirectory():
 
 def domaincontrolleryorn():
     clear_screen()
-    print("did you set this instalation as a primary domain controller?")
+    print("Did you set this installation as a primary domain controller?")
     print("")
     print("If you select yes then it will upgrade the forrest and domain to")
     print("Server 2008 R2 levels. This may break compatibility with earlier")
-    print("versions of Windows Server. You can alwayse manually change the levels")
+    print("versions of Windows Server. You can always manually change the levels")
     print("if you wish... Press wisely!")
     print("")
     print("Y or N:")
@@ -89,6 +103,7 @@ def domaincontrolleryorn():
 #        print("read -n 1")
         mainmenu()
     else:
+        clear_screen()
         print("Please press either Y or N!!!")
         print("")
         print("Press Enter/Return to continue...")
