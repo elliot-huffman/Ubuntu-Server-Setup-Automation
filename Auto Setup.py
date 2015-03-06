@@ -29,8 +29,11 @@ def updatesystem():
     call(["sudo", "apt-get", "update"])
     call(["sudo", "apt-get", "-y", "dist-upgrade"])
     print("Update Complete!")
-    print("It may be wise to restart your computer...")
-    call(["read", "-n", "1"])
+    print("It may be wise to restart your computer.")
+    print("")
+    print("Press Enter/Return to continue...")
+    input()
+ #   call(["read", "-n", "1"])
     call("clear")
 
 # This install the latest updates for the system and then returns to the main menu.
@@ -62,14 +65,16 @@ def domaincontrolleryorn ():
     elif domaincontrolleryesorno == "N" or domaincontrolleryesorno == "n":
         call("clear")
         print("Samba configuration complete!")
-        print("Press any key to continue...")
-        print("read -n 1")
+        print("Press Enter/Return to continue...")
+        input()
+#        print("read -n 1")
         mainmenu()
     else:
         print("Please press either Y or N!!!")
         print("")
-        print("Press any key to continue...")
-        call(["read", "-n", "1"])
+        print("Press Enter/Return to continue...")
+        input()
+#        call(["read", "-n", "1"])
         call("clear")
         domaincontrolleryorn()
 
@@ -82,8 +87,9 @@ def upgradeforrestanddomain():
     call(["sudo", "samba-tool", "domain", "passwordsettings", "set", "--complexity=off"])
     print("Domain Controller setup has completed!")
     print("")
-    print("Press any key to return to the main menu...")
-    call(["read", "-n", "1"])
+    print("Press Enter/Return to return to the main menu...")
+    input()
+#    call(["read", "-n", "1"])
     call("clear")
     mainmenu()
 
@@ -132,8 +138,9 @@ def mainmenu():
         print("You have entered an invallid selection!")
         print("Please try again!")
         print("")
-        print("Press any key to continue...")
-        call(["read", "-n", "1"])
+        print("Press Return/Enter to continue...")
+        input()
+#        call(["read", "-n", "1"])
         call("clear")
         mainmenu()
 
