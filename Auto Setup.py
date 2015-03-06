@@ -58,8 +58,8 @@ def domaincontrolleryorn ():
     print("Y or N:")
     domaincontrolleryesorno = input("Y or N:")
     if domaincontrolleryesorno == "Y" or domaincontrolleryesorno == "y":
-    upgradeforrestanddomain
-    elif domaincontrolleryesorno == "N" or domaincontrolleryesorno == "n"
+        upgradeforrestanddomain
+    elif domaincontrolleryesorno == "N" or domaincontrolleryesorno == "n":
         call("clear")
         print("Samba configuration complete!")
         print("Press any key to continue...")
