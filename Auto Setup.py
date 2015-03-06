@@ -13,7 +13,7 @@ def clear_screen():
 def installsamba():
     call(["sudo", "apt-get", "update"])
     call(["sudo", "apt-get", "-y", "dist-upgrade"])
-    call(["sudo", "apt-get", "install", "python-dnspython", "dnsutils", "attr", "krb5-user", "docbook-xsl", "acl", "samba"])
+    call(["sudo", "apt-get", "-y", "install", "python-dnspython", "dnsutils", "attr", "krb5-user", "docbook-xsl", "acl", "samba"])
     clear_screen()
     print("SAMBA is now installed!")
     print("")
@@ -73,6 +73,7 @@ def configuresambaforactivedirectory():
     call(["sudo", "mv", "/etc/krb5.conf", "/etc/krb5.conf.bak"])
     call(["sudo", "cp", "/var/lib/samba/private/krb5.conf", "/etc/krb5.conf"])
     clear_screen()
+    domaincontrolleryorn()
     print("SAMBA is now configured for Active Directory!")
     print("")
     print("Press Enter/Return to continue...")
@@ -94,14 +95,12 @@ def domaincontrolleryorn():
     domaincontrolleryesorno = str(input("Y or N:"))
     if domaincontrolleryesorno == "Y" or domaincontrolleryesorno == "y":
         upgradeforrestanddomain()
-        mainmenu()
     elif domaincontrolleryesorno == "N" or domaincontrolleryesorno == "n":
         clear_screen()
         print("Samba configuration complete!")
         print("Press Enter/Return to continue...")
         input()
 #        print("read -n 1")
-        mainmenu()
     else:
         clear_screen()
         print("Please press either Y or N!!!")
@@ -124,7 +123,6 @@ def upgradeforrestanddomain():
     print("Press Enter/Return to return to the main menu...")
     input()
 #    call(["read", "-n", "1"])
-    mainmenu()
 
 
 # This function upgrade the Domain and Forrest level to (Server) 2008_R2.
