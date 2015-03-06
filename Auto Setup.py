@@ -58,7 +58,7 @@ def domaincontrolleryorn ():
     print("Y or N:")
     domaincontrolleryesorno = input("Y or N:")
     if domaincontrolleryesorno == "Y" or domaincontrolleryesorno == "y":
-        upgradeforrestanddomain
+        upgradeforrestanddomain()
     elif domaincontrolleryesorno == "N" or domaincontrolleryesorno == "n":
         call("clear")
         print("Samba configuration complete!")
@@ -71,7 +71,7 @@ def domaincontrolleryorn ():
         print("Press any key to continue...")
         call("read -n 1")
         call("clear")
-        domaincontrolleryorn
+        domaincontrolleryorn()
 
 # This asks the user if he or she would like to upgrade the domain and forrest level.
 # If yes then it roputs the user to the code below. If not then the user is taken to the main menu.
@@ -85,7 +85,7 @@ def upgradeforrestanddomain():
     print("Press any key to return to the main menu...")
     call("read -n 1")
     call("clear")
-    mainmenu
+    mainmenu()
 
 
 # This function upgrade the Domain and Forrest level to (Server) 2008_R2.
@@ -111,22 +111,22 @@ def mainmenu():
     mainmenuinput = input("Input Selection:")
     if mainmenuinput == 1:
         call("clear")
-        updatesystem
+        updatesystem()
     elif mainmenuinput == 2:
         call("clear")
-        installsamba
+        installsamba()
     elif mainmenuinput == 3:
         call("clear")
-        installvsftpd
+        installvsftpd()
     elif mainmenuinput == 4:
         call("clear")
-        installwebmin
+        installwebmin()
     elif mainmenuinput == 5:
         call("clear")
-        configuresambaforactivedirectory
+        configuresambaforactivedirectory()
     elif mainmenuinput == "x" or mainmenuinput == "X":
         call("clear")
-        quitprogram
+        quitprogram()
     else:
         print("You have entered an invallid selection!")
         print("Please try again!")
@@ -134,11 +134,11 @@ def mainmenu():
         print("Press any key to continue...")
         call("read -n 1")
         call("clear")
-        mainmenu
+        mainmenu()
 
 # This builds the main menu and routs the user to the function selected.
 
-mainmenu
+mainmenu()
 
 # This executes the main menu function.
 # Let the fun begin!!!! WOOT WOOT!!!!
