@@ -92,9 +92,9 @@ def domaincontrolleryorn():
     print("")
     print("Y or N:")
     domaincontrolleryesorno = str(input("Y or N:"))
-    if domaincontrolleryesorno == "Y" or domaincontrolleryesorno == "y":
+    if domaincontrolleryesorno.lower() == "y":
         upgradeforrestanddomain()
-    elif domaincontrolleryesorno == "N" or domaincontrolleryesorno == "n":
+    elif domaincontrolleryesorno.lower() == "n":
         clear_screen()
         print("Samba configuration complete!")
         print("Press Enter/Return to continue...")
@@ -156,7 +156,7 @@ def mainmenu():
         installwebmin()
     elif mainmenuinput == "5":
         configuresambaforactivedirectory()
-    elif mainmenuinput == "x" or mainmenuinput == "X":
+    elif mainmenuinput.lower() == "x":
         quitprogram()
     else:
         clear_screen()
