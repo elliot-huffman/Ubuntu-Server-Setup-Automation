@@ -15,9 +15,8 @@ def installsamba():
     call(["sudo", "apt-get", "-y", "dist-upgrade"])
     call(["sudo", "apt-get", "-y", "install", "python-dnspython", "dnsutils", "attr", "krb5-user", "docbook-xsl", "acl", "samba"])
     clear_screen()
-    print("SAMBA is now installed!")
-    print("")
-    print("Press Enter/Return to continue...")
+    print("SAMBA is now installed!\n")
+    input("Press Enter/Return to continue...")
     mainmenu()
 
 # This installs all of the necessary components for building samba then downloads samba from git.
@@ -28,9 +27,8 @@ def installvsftpd():
     call(["sudo", "apt-get", "-y", "dist-upgrade"])
     call(["sudo", "apt-get", "-y", "install", "vsftpd"])
     clear_screen()
-    print("VSFTPd is now installed!")
-    print("")
-    print("Press Enter/Return to continue...")
+    print("VSFTPd is now installed!\n")
+    input("Press Enter/Return to continue...")
     mainmenu()
 # This installs VSFTPd and return to the main menu.
 
@@ -43,9 +41,8 @@ def installwebmin():
     call(["sudo", "apt-get", "-y", "install", "-f"])
     call(["rm", "webmin-current.deb"])
     clear_screen()
-    print("Webmin is now installed!")
-    print("")
-    print("Press Enter/Return to continue...")
+    print("Webmin is now installed!\n")
+    input("Press Enter/Return to continue...")
     mainmenu()
 
 # This installs the current version of WebMin and then returns to the main menu.
@@ -55,10 +52,8 @@ def updatesystem():
     call(["sudo", "apt-get", "-y", "dist-upgrade"])
     clear_screen()
     print("Update Complete!")
-    print("It may be wise to restart your computer.")
-    print("")
-    print("Press Enter/Return to continue...")
-    input()
+    print("It may be wise to restart your computer.\n")
+    input("Press Enter/Return to continue...")
  #  call(["read", "-n", "1"])
     mainmenu()
 
@@ -73,9 +68,8 @@ def configuresambaforactivedirectory():
     call(["sudo", "cp", "/var/lib/samba/private/krb5.conf", "/etc/krb5.conf"])
     domaincontrolleryorn()
     clear_screen()
-    print("SAMBA is now configured for Active Directory!")
-    print("")
-    print("Press Enter/Return to continue...")
+    print("SAMBA is now configured for Active Directory!\n")
+    input("Press Enter/Return to continue...")
     mainmenu()
 
 # This function runs all of the necessary actions to make samba a domain controller.
@@ -83,14 +77,7 @@ def configuresambaforactivedirectory():
 
 def domaincontrolleryorn():
     clear_screen()
-    print("Did you set this installation as a primary domain controller?")
-    print("")
-    print("If you select yes then it will upgrade the forrest and domain to")
-    print("Server 2008 R2 levels. This may break compatibility with earlier")
-    print("versions of Windows Server. You can always manually change the levels")
-    print("if you wish... Press wisely!")
-    print("")
-    print("Y or N:")
+    print("Did you set this installation as a primary domain controller?\nIf you select yes then it will upgrade the forest and domain to\nServer 2008 R2 levels. This may break compatibility with earlier\nversions of Windows Server. You can always manually change the levels\nif you wish... Press wisely!\n")
     domaincontrolleryesorno = str(input("Y or N:"))
     if domaincontrolleryesorno.lower() == "y":
         upgradeforrestanddomain()
@@ -102,10 +89,8 @@ def domaincontrolleryorn():
 #        print("read -n 1")
     else:
         clear_screen()
-        print("Please press either Y or N!!!")
-        print("")
-        print("Press Enter/Return to continue...")
-        input()
+        print("Please press either Y or N!!!\n")
+        input("Press Enter/Return to continue...")
 #        call(["read", "-n", "1"])
         domaincontrolleryorn()
 
@@ -117,10 +102,8 @@ def upgradeforrestanddomain():
     call(["sudo", "samba-tool", "domain level", "raise", "--domain-level=2008_R2"])
     call(["sudo", "samba-tool", "domain", "level", "raise", "--forest-level=2008_R2"])
     call(["sudo", "samba-tool", "domain", "passwordsettings", "set", "--complexity=off"])
-    print("Domain Controller setup has completed!")
-    print("")
-    print("Press Enter/Return to return to the main menu...")
-    input()
+    print("Domain Controller setup has completed!\n")
+    input("Press Enter/Return to return to the main menu...")
 #    call(["read", "-n", "1"])
 
 
@@ -132,19 +115,13 @@ def quitprogram():
     clear_screen()
     print("Sorry to see you go... :(")
     exit()
-# This is a simple good by program closer.
+# This is a simple program closer.
 # Oh, did I mention that it stops the program?
 
 
 def mainmenu():
     clear_screen()
-    print("Press 1 to update your system")
-    print("Press 2 to install samba")
-    print("Press 3 to install vsFTPd")
-    print("Press 4 to install the current version of Webmin")
-    print("Press 5 to configure samba for Active Directory")
-    print("Press x to exit the script")
-    print("")
+    print("Press 1 to update your system\nPress 2 to install samba\nPress 3 to install vsFTPd\nPress 4 to install the current version of Webmin\nPress 5 to configure samba for Active Directory\nPress x to exit the script\n")
     mainmenuinput = str(input("Input Selection:"))
     if mainmenuinput == "1":
         updatesystem()
@@ -160,11 +137,8 @@ def mainmenu():
         quitprogram()
     else:
         clear_screen()
-        print("You have entered an invallid selection!")
-        print("Please try again!")
-        print("")
-        print("Press Return/Enter to continue...")
-        input()
+        print("You have entered an invallid selection!\nPlease try again!\n")
+        input("Press Return/Enter to continue...")
 #        call(["read", "-n", "1"])
         mainmenu()
 
