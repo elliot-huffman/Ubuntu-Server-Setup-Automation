@@ -1,5 +1,5 @@
 #change puppet enviroment
-sudo /opt/puppetlabs/bin/puppet config set --environment=puppetlab
+sudo /opt/puppetlabs/bin/puppet config set --environment=<env_name>
 
 # execute puppet update
 sudo /opt/puppetlabs/bin/puppet agent --test
