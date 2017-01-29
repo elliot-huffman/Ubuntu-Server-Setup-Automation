@@ -5,13 +5,14 @@
 installsamba () {
   sudo apt-get update
   sudo apt-get -y dist-upgrade
-  sudo apt-get install python-dnspython dnsutils attr krb5-user docbook-xsl acl samba
+  sudo apt-get install samba
   mainmenu
   }
 
 # This installs all of the necessary components for building samba then downloads samba from git.
 # After that it then compiles and installs samba and returns to the main menu.
 
+# Depreciated
 installvsftpd () {
   sudo apt-get update
   sudo apt-get -y dist-upgrade
@@ -20,6 +21,7 @@ installvsftpd () {
   }
 
 # This installs VSFTPd and return to the main menu.
+# Depreciated, use SSH for SFTP access as it is far more secure than standard FTP.
 
 
 installwebmin () {
@@ -48,7 +50,6 @@ updatesystem () {
 
 
 configuresambaforactivedirectory () {
-  sudo sed -i.original -r '/[ \t]\/[ \t]/{s/(ext4[\t ]*)([^\t ]*)/\1\2,user_xattr,acl,barrier=1/}' /etc/fstab
   mount -a
   sudo rm /etc/samba/smb.conf
   sudo samba-tool domain provision --use-rfc2307 --interactive
@@ -129,7 +130,7 @@ quitprogram () {
 mainmenu () {
   echo "Press 1 to update your system"
   echo "Press 2 to install samba"
-  echo "Press 3 to install vsFTPd"
+  echo "Press 3 to install vsFTPd - Depreciated"
   echo "Press 4 to install the current version of Webmin"
   echo "Press 5 to configure samba for Active Directory"
   echo "Press x to exit the script"
