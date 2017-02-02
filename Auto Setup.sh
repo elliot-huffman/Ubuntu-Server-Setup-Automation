@@ -50,8 +50,16 @@ updatesystem () {
 
 
 configuresambaforactivedirectory () {
-  mount -a
+  sudo service samba stop
   sudo rm /etc/samba/smb.conf
+  sudo rm /var/run/samba/*.tdb
+  sudo rm /var/lib/samba/*.tdb
+  sudo rm /var/cache/samba/*.tdb
+  sudo rm /var/lib/samba/private/*.tdb
+  sudo rm /var/run/samba/*.ldb
+  sudo rm /var/lib/samba/*.ldb
+  sudo rm /var/cache/samba/*.ldb
+  sudo rm /var/lib/samba/private/*.ldb
   sudo samba-tool domain provision --use-rfc2307 --interactive
   sudo mv /etc/krb5.conf /etc/krb5.conf.bak
   sudo cp /var/lib/samba/private/krb5.conf /etc/krb5.conf
