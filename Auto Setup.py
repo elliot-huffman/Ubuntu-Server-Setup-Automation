@@ -13,7 +13,7 @@ def clear_screen():
 def installsamba():
     call(["sudo", "apt-get", "update"])
     call(["sudo", "apt-get", "-y", "dist-upgrade"])
-    call(["sudo", "apt-get", "-y", "install", "python-dnspython", "dnsutils", "attr", "krb5-user", "docbook-xsl", "acl", "samba"])
+    call(["sudo", "apt-get", "-y", "install", "winbind", "samba", "krb5-user"])
     clear_screen()
     print("SAMBA is now installed!\n")
     input("Press Enter/Return to continue...")
@@ -121,7 +121,7 @@ def quitprogram():
 
 def mainmenu():
     clear_screen()
-    print("Press 1 to update your system\nPress 2 to install samba\nPress 3 to install vsFTPd\nPress 4 to install the current version of Webmin\nPress 5 to configure samba for Active Directory\nPress x to exit the script\n")
+    print("Press 1 to update your system\nPress 2 to install samba\nPress 3 to install vsFTPd - Depreciated\nPress 4 to install the current version of Webmin\nPress 5 to configure samba for Active Directory\nPress x to exit the script\n")
     mainmenuinput = str(input("Input Selection:"))
     if mainmenuinput == "1":
         updatesystem()
