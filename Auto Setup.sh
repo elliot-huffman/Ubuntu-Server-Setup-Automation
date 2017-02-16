@@ -5,7 +5,7 @@
 installsamba () {
   sudo apt-get update
   sudo apt-get -y dist-upgrade
-  sudo apt-get install samba
+  sudo apt-get install samba winbind
   mainmenu
   }
 
