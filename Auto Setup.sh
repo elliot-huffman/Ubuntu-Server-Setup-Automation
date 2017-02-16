@@ -5,7 +5,7 @@
 installsamba () {
   sudo apt-get update
   sudo apt-get -y dist-upgrade
-  sudo apt-get install samba winbind
+  sudo apt-get install samba winbind krb5-user
   mainmenu
   }
 
@@ -62,7 +62,7 @@ configuresambaforactivedirectory () {
   sudo rm /var/lib/samba/private/*.ldb
   sudo samba-tool domain provision --use-rfc2307 --interactive
   sudo mv /etc/krb5.conf /etc/krb5.conf.bak
-  sudo cp /var/lib/samba/private/krb5.conf /etc/krb5.conf
+  sudo ln -sf /var/lib/samba/private/krb5.conf /etc/krb5.conf
   domaincontrolleryorn
   }
 
