@@ -112,6 +112,9 @@ upgradeforrestanddomain () {
   sudo samba-tool domain level raise --domain-level=2008_R2
   sudo samba-tool domain level raise --forest-level=2008_R2
   sudo samba-tool domain passwordsettings set --complexity=off
+  sudo samba-tool domain passwordsettings set --history-length=0
+  sudo samba-tool domain passwordsettings set --min-pwd-age=0
+  sudo samba-tool domain passwordsettings set --max-pwd-age=0
   echo "Domain Controller setup has completed!"
   echo ""
   echo "Press any key to return to the main menu..."
