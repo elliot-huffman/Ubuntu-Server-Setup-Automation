@@ -5,7 +5,7 @@
 installsamba () {
   sudo apt-get update
   sudo apt-get -y dist-upgrade
-  sudo apt-get install samba winbind krb5-user
+  sudo apt-get install -y samba winbind krb5-user
   mainmenu
   }
 
