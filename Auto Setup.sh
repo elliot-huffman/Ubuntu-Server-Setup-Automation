@@ -77,8 +77,7 @@ domaincontrolleryorn () {
   echo "versions of Windows Server. You can alwayse manually change the levels"
   echo "if you wish... Press wisely!"
   echo ""
-  echo "Y or N:"
-  read -n 1 -p "Y or N:" "omaincontrolleryesorno"
+  read -n 1 -p "Y or N:" "domaincontrolleryesorno"
   if [ $domaincontrolleryesorno = "Y" ]; then
    upgradeforrestanddomain
    elif [ "$$domaincontrolleryesorno" = "N" ]; then
