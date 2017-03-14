@@ -4,7 +4,6 @@
 
 installsamba () {
   sudo apt-get update
-  sudo apt-get -y dist-upgrade
   sudo apt-get install -y samba winbind krb5-user
   mainmenu
   }
@@ -15,7 +14,6 @@ installsamba () {
 # Depreciated
 installvsftpd () {
   sudo apt-get update
-  sudo apt-get -y dist-upgrade
   sudo apt-get -y install vsftpd
   mainmenu
   }
@@ -27,7 +25,6 @@ installvsftpd () {
 installwebmin () {
   wget http://www.webmin.com/download/deb/webmin-current.deb
   sudo apt-get update
-  sudo apt-get -y dist-upgrade
   sudo dpkg -i webmin-current.deb
   sudo apt-get -y install -f
   rm webmin-current.deb
