@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Ititialization
+# Initialization
 
 installsamba () {
   clear
@@ -72,11 +72,11 @@ configuresambaforactivedirectory () {
 
 domaincontrolleryorn () {
   clear
-  echo "did you set this instalation as a primary domain controller?"
+  echo "Did you set this installation as a primary domain controller?"
   echo ""
-  echo "If you select yes then it will upgrade the forrest and domain to"
+  echo "If you select yes then it will upgrade the forest and domain to"
   echo "Server 2008 R2 levels. This may break compatibility with earlier"
-  echo "versions of Windows Server. You can alwayse manually change the levels"
+  echo "versions of Windows Server. You can always manually change the levels"
   echo "if you wish... Press wisely!"
   echo ""
   read -n 1 -p "Y or N:" "domaincontrolleryesorno"
@@ -98,8 +98,8 @@ domaincontrolleryorn () {
     fi
   }
   
-# This asks the user if he or she would like to upgrade the domain and forrest level.
-# If yes then it roputs the user to the code below. If not then the user is taken to the main menu.
+# This asks the user if he or she would like to upgrade the domain and forest level.
+# If yes then it routs the user to the code below. If not then the user is taken to the main menu.
   
 upgradeforrestanddomain () {
   clear
@@ -160,7 +160,7 @@ mainmenu () {
             quitprogram
         else
             clear
-            echo "You have entered an invallid selection!"
+            echo "You have entered an invalid selection!"
             echo "Please try again!"
             echo ""
             echo "Press any key to continue..."
