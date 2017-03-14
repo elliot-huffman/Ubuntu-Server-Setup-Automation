@@ -78,22 +78,14 @@ domaincontrolleryorn () {
   echo "if you wish... Press wisely!"
   echo ""
   read -n 1 -p "Y or N:" "domaincontrolleryesorno"
-  if [ $domaincontrolleryesorno = "Y" ]; then
+  if [ ${domaincontrolleryesorno^^} = "Y" ]; then
    upgradeforrestanddomain
-   elif [ "$$domaincontrolleryesorno" = "N" ]; then
+   elif [ "$${domaincontrolleryesorno^^}" = "N" ]; then
             clear
             echo "Samba configuration complete!"
             echo "Press any key to continue..."
             read -n 1
             mainmenu
-    elif [ "$$domaincontrolleryesorno" = "n" ]; then
-            clear
-            echo "Samba configuration complete!"
-            echo "Press any key to continue..."
-            read -n 1
-            mainmenu
-    elif [ "$$domaincontrolleryesorno" = "y" ]; then
-            upgradeforrestanddomain
     else
       echo "Please press either Y or N!!!"
       echo ""
@@ -160,10 +152,7 @@ mainmenu () {
         elif [ "$mainmenuinput" = "5" ]; then
             clear
             configuresambaforactivedirectory
-        elif [ "$mainmenuinput" = "x" ];then
-            clear
-            quitprogram
-        elif [ "$mainmenuinput" = "X" ];then
+        elif [ "${mainmenuinput^^}" = "X" ];then
             clear
             quitprogram
         else
