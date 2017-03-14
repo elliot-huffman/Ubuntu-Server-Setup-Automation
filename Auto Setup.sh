@@ -9,8 +9,8 @@ installsamba () {
   mainmenu
   }
 
-# This installs all of the necessary components for building samba then downloads samba from git.
-# After that it then compiles and installs samba and returns to the main menu.
+# Downloads and installs samba and its required components to operate as an AD DS DC.
+# After samba has finished installing, it returns to the main menu.
 
 # Depreciated
 installvsftpd () {
