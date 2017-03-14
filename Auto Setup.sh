@@ -3,6 +3,7 @@
 # Ititialization
 
 installsamba () {
+  clear
   sudo apt-get update
   sudo apt-get install -y samba winbind krb5-user
   mainmenu
@@ -13,6 +14,7 @@ installsamba () {
 
 # Depreciated
 installvsftpd () {
+  clear
   sudo apt-get update
   sudo apt-get -y install vsftpd
   mainmenu
@@ -23,6 +25,7 @@ installvsftpd () {
 
 
 installwebmin () {
+  clear
   wget http://www.webmin.com/download/deb/webmin-current.deb
   sudo apt-get update
   sudo dpkg -i webmin-current.deb
@@ -34,12 +37,12 @@ installwebmin () {
 # This installs the current version of WebMin and then returns to the main menu.
 
 updatesystem () {
+  clear
   sudo apt-get update
   sudo apt-get -y dist-upgrade
   echo "Update Complete!"
   echo "It may be wise to restart your computer..."
   read -n 1
-  clear
   mainmenu
   }
 
@@ -47,6 +50,7 @@ updatesystem () {
 
 
 configuresambaforactivedirectory () {
+  clear
   sudo service samba stop
   sudo rm /etc/samba/smb.conf
   sudo rm /var/run/samba/*.tdb
@@ -67,6 +71,7 @@ configuresambaforactivedirectory () {
 
 
 domaincontrolleryorn () {
+  clear
   echo "did you set this instalation as a primary domain controller?"
   echo ""
   echo "If you select yes then it will upgrade the forrest and domain to"
@@ -84,11 +89,11 @@ domaincontrolleryorn () {
             read -n 1
             mainmenu
     else
+      clear
       echo "Please press either Y or N!!!"
       echo ""
       echo "Press any key to continue..."
       read -n 1
-      clear
       domaincontrolleryorn
     fi
   }
@@ -97,6 +102,7 @@ domaincontrolleryorn () {
 # If yes then it roputs the user to the code below. If not then the user is taken to the main menu.
   
 upgradeforrestanddomain () {
+  clear
   sudo samba-tool domain level raise --domain-level=2008_R2
   sudo samba-tool domain level raise --forest-level=2008_R2
   sudo samba-tool domain passwordsettings set --complexity=off
@@ -107,7 +113,6 @@ upgradeforrestanddomain () {
   echo ""
   echo "Press any key to return to the main menu..."
   read -n 1
-  clear
   mainmenu
   }
 
@@ -127,6 +132,7 @@ quitprogram () {
 
 
 mainmenu () {
+  clear
   echo "Press 1 to update your system"
   echo "Press 2 to install samba"
   echo "Press 3 to install vsFTPd - Depreciated"
@@ -153,12 +159,12 @@ mainmenu () {
             clear
             quitprogram
         else
+            clear
             echo "You have entered an invallid selection!"
             echo "Please try again!"
             echo ""
             echo "Press any key to continue..."
             read -n 1
-            clear
             mainmenu
         fi
 }
